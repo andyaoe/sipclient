@@ -1,0 +1,10 @@
+<!DOCTYPE Workspace SYSTEM "http://www.slickedit.com/dtd/vse/10.0/vpw.dtd">
+<Workspace Version="10.0" VendorName="SlickEdit">
+	<Projects>
+		<Project File="BasicUsageEnvironment/BasicUsageEnvironment.vpj"/>
+		<Project File="groupsock/GroupSock.vpj"/>
+		<Project File="liveMedia/LiveMedia.vpj"/>
+		<Project File="SipClient.vpj"/>
+		<Project File="UsageEnvironment/UsageEnvironment.vpj"/>
+	</Projects>
+</Workspace>

@@ -1,0 +1,378 @@
+<!DOCTYPE Project SYSTEM "http://www.slickedit.com/dtd/vse/10.0/vpj.dtd">
+<Project
+    Version="10.0"
+    VendorName="SlickEdit"
+    TemplateName="GNU C/C++"
+    WorkingDir="."
+    BuildSystem="automakefile"
+    BuildMakeFile="%rp%rn.mak">
+    <Config
+        Name="Debug"
+        Type="gnuc"
+        DebugCallbackName="gdb"
+        Version="1"
+        OutputFile="%bdLiveMedia.a"
+        CompilerConfigName="Latest Version">
+        <Menu>
+            <Target
+                Name="Compile"
+                MenuCaption="&amp;Compile"
+                Dialog="_gnuc_options_form Compile"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                OutputExts="*.o"
+                SaveOption="SaveCurrent"
+                RunFromDir="%rw">
+                <Exec CmdLine='g++ -c %xup  %defd -g -o "%bd%n%oe" %i "%f"'/>
+            </Target>
+            <Target
+                Name="Link"
+                MenuCaption="&amp;Link"
+                ShowOnMenu="Never"
+                Dialog="_gnuc_options_form Link"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                SaveOption="SaveCurrent"
+                RunFromDir="%rw">
+                <Exec CmdLine='ar -rs %xup "%o" %f'/>
+            </Target>
+            <Target
+                Name="Build"
+                MenuCaption="&amp;Build"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine='make -f "%rp%rn.mak" CFG=%b'/>
+            </Target>
+            <Target
+                Name="Rebuild"
+                MenuCaption="&amp;Rebuild"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine='make -f "%rp%rn.mak" rebuild CFG=%b'/>
+            </Target>
+            <Target
+                Name="Debug"
+                MenuCaption="&amp;Debug"
+                Dialog="_gnuc_options_form Run/Debug"
+                BuildFirst="1"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                SaveOption="SaveNone"
+                RunFromDir="%rw">
+                <Exec CmdLine=""/>
+            </Target>
+            <Target
+                Name="Execute"
+                MenuCaption="E&amp;xecute"
+                Dialog="_gnuc_options_form Run/Debug"
+                BuildFirst="1"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine=""/>
+            </Target>
+            <Target
+                Name="dash"
+                MenuCaption="-"
+                Deletable="0">
+                <Exec/>
+            </Target>
+            <Target
+                Name="GNU C Options"
+                MenuCaption="GNU C &amp;Options..."
+                ShowOnMenu="HideIfNoCmdLine"
+                Deletable="0"
+                SaveOption="SaveNone">
+                <Exec
+                    CmdLine="gnucoptions"
+                    Type="Slick-C"/>
+            </Target>
+        </Menu>
+        <List Name="GNUC Options">
+            <Item
+                Name="LinkerOutputType"
+                Value="StaticLibrary"/>
+        </List>
+        <Includes>
+            <Include Dir="/home/andyaoe/Projects/SipClient/liveMedia/include/"/>
+            <Include Dir="/home/andyaoe/Projects/SipClient/groupsock/include/"/>
+            <Include Dir="/home/andyaoe/Projects/SipClient/UsageEnvironment/include/"/>
+            <Include Dir="/home/andyaoe/Projects/SipClient/BasicUsageEnvironment/include/"/>
+        </Includes>
+        <Libs PreObjects="0">
+            <Lib File="BasicUsageEnvironment/Debug/BasicUsageEnvironment.a"/>
+            <Lib File="groupsock/Debug/GroupSock.a"/>
+        </Libs>
+        <PostBuildCommands>
+            <Exec CmdLine="mv Debug/LiveMedia.a Debug/libLiveMedia.a"/>
+        </PostBuildCommands>
+    </Config>
+    <Config
+        Name="Release"
+        Type="gnuc"
+        DebugCallbackName="gdb"
+        Version="1"
+        OutputFile="%bdLiveMedia.a"
+        CompilerConfigName="Latest Version">
+        <Menu>
+            <Target
+                Name="Compile"
+                MenuCaption="&amp;Compile"
+                Dialog="_gnuc_options_form Compile"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                OutputExts="*.o"
+                SaveOption="SaveCurrent"
+                RunFromDir="%rw">
+                <Exec CmdLine='g++ -c %xup %defd -o "%bd%n%oe" %i "%f"'/>
+            </Target>
+            <Target
+                Name="Link"
+                MenuCaption="&amp;Link"
+                ShowOnMenu="Never"
+                Dialog="_gnuc_options_form Link"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                SaveOption="SaveCurrent"
+                RunFromDir="%rw">
+                <Exec CmdLine='ar -rs %xup "%o" %f'/>
+            </Target>
+            <Target
+                Name="Build"
+                MenuCaption="&amp;Build"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine='make -f "%rp%rn.mak" CFG=%b'/>
+            </Target>
+            <Target
+                Name="Rebuild"
+                MenuCaption="&amp;Rebuild"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine='make -f "%rp%rn.mak" rebuild CFG=%b'/>
+            </Target>
+            <Target
+                Name="Debug"
+                MenuCaption="&amp;Debug"
+                Dialog="_gnuc_options_form Run/Debug"
+                BuildFirst="1"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                SaveOption="SaveNone"
+                RunFromDir="%rw">
+                <Exec CmdLine=""/>
+            </Target>
+            <Target
+                Name="Execute"
+                MenuCaption="E&amp;xecute"
+                Dialog="_gnuc_options_form Run/Debug"
+                BuildFirst="1"
+                CaptureOutputWith="ProcessBuffer"
+                Deletable="0"
+                SaveOption="SaveWorkspaceFiles"
+                RunFromDir="%rw">
+                <Exec CmdLine=""/>
+            </Target>
+            <Target
+                Name="dash"
+                MenuCaption="-"
+                Deletable="0">
+                <Exec/>
+            </Target>
+            <Target
+                Name="GNU C Options"
+                MenuCaption="GNU C &amp;Options..."
+                ShowOnMenu="HideIfNoCmdLine"
+                Deletable="0"
+                SaveOption="SaveNone">
+                <Exec
+                    CmdLine="gnucoptions"
+                    Type="Slick-C"/>
+            </Target>
+        </Menu>
+        <List Name="GNUC Options">
+            <Item
+                Name="LinkerOutputType"
+                Value="StaticLibrary"/>
+        </List>
+        <Includes>
+            <Include Dir="/home/andyaoe/Projects/SipClient/liveMedia/include/"/>
+            <Include Dir="/home/andyaoe/Projects/SipClient/groupsock/include/"/>
+            <Include Dir="/home/andyaoe/Projects/SipClient/UsageEnvironment/include/"/>
+            <Include Dir="/home/andyaoe/Projects/SipClient/BasicUsageEnvironment/include/"/>
+        </Includes>
+        <Libs PreObjects="0">
+            <Lib File="BasicUsageEnvironment/Debug/BasicUsageEnvironment.a"/>
+            <Lib File="groupsock/Debug/GroupSock.a"/>
+        </Libs>
+        <PostBuildCommands>
+            <Exec CmdLine="mv Debug/LiveMedia.a Debug/libLiveMedia.a"/>
+        </PostBuildCommands>
+    </Config>
+    <Files>
+        <Folder
+            Name="Source Files"
+            Filters="*.c;*.C;*.cc;*.cpp;*.cp;*.cxx;*.c++;*.prg;*.pas;*.dpr;*.asm;*.s;*.bas;*.java;*.cs;*.sc;*.e;*.cob;*.html;*.rc;*.tcl;*.py;*.pl;*.d;*.m;*.mm;*.go">
+            <F N="AC3AudioRTPSink.cpp"/>
+            <F N="AC3AudioRTPSource.cpp"/>
+            <F N="AC3AudioStreamFramer.cpp"/>
+            <F N="ADTSAudioFileServerMediaSubsession.cpp"/>
+            <F N="ADTSAudioFileSource.cpp"/>
+            <F N="AMRAudioFileServerMediaSubsession.cpp"/>
+            <F N="AMRAudioFileSink.cpp"/>
+            <F N="AMRAudioFileSource.cpp"/>
+            <F N="AMRAudioRTPSink.cpp"/>
+            <F N="AMRAudioRTPSource.cpp"/>
+            <F N="AMRAudioSource.cpp"/>
+            <F N="AudioInputDevice.cpp"/>
+            <F N="AudioRTPSink.cpp"/>
+            <F N="AVIFileSink.cpp"/>
+            <F N="Base64.cpp"/>
+            <F N="BasicUDPSink.cpp"/>
+            <F N="BasicUDPSource.cpp"/>
+            <F N="BitVector.cpp"/>
+            <F N="ByteStreamFileSource.cpp"/>
+            <F N="ByteStreamMultiFileSource.cpp"/>
+            <F N="DarwinInjector.cpp"/>
+            <F N="DeviceSource.cpp"/>
+            <F N="DigestAuthentication.cpp"/>
+            <F N="DVVideoFileServerMediaSubsession.cpp"/>
+            <F N="DVVideoRTPSink.cpp"/>
+            <F N="DVVideoRTPSource.cpp"/>
+            <F N="DVVideoStreamFramer.cpp"/>
+            <F N="FileServerMediaSubsession.cpp"/>
+            <F N="FileSink.cpp"/>
+            <F N="FramedFileSource.cpp"/>
+            <F N="FramedFilter.cpp"/>
+            <F N="FramedSource.cpp"/>
+            <F N="GSMAudioRTPSink.cpp"/>
+            <F N="H261VideoRTPSource.cpp"/>
+            <F N="H263plusVideoFileServerMediaSubsession.cpp"/>
+            <F N="H263plusVideoRTPSink.cpp"/>
+            <F N="H263plusVideoRTPSource.cpp"/>
+            <F N="H263plusVideoStreamFramer.cpp"/>
+            <F N="H263plusVideoStreamParser.cpp"/>
+            <F N="H264VideoFileSink.cpp"/>
+            <F N="H264VideoRTPSink.cpp"/>
+            <F N="H264VideoRTPSource.cpp"/>
+            <F N="H264VideoStreamFramer.cpp"/>
+            <F N="HTTPSink.cpp"/>
+            <F N="InputFile.cpp"/>
+            <F N="JPEGVideoRTPSink.cpp"/>
+            <F N="JPEGVideoRTPSource.cpp"/>
+            <F N="JPEGVideoSource.cpp"/>
+            <F N="Locale.cpp"/>
+            <F N="Media.cpp"/>
+            <F N="MediaSession.cpp"/>
+            <F N="MediaSink.cpp"/>
+            <F N="MediaSource.cpp"/>
+            <F N="MP3ADU.cpp"/>
+            <F N="MP3ADUdescriptor.cpp"/>
+            <F N="MP3ADUinterleaving.cpp"/>
+            <F N="MP3ADURTPSink.cpp"/>
+            <F N="MP3ADURTPSource.cpp"/>
+            <F N="MP3ADUTranscoder.cpp"/>
+            <F N="MP3AudioFileServerMediaSubsession.cpp"/>
+            <F N="MP3FileSource.cpp"/>
+            <F N="MP3HTTPSource.cpp"/>
+            <F N="MP3Internals.cpp"/>
+            <F N="MP3InternalsHuffman.cpp"/>
+            <F N="MP3InternalsHuffmanTable.cpp"/>
+            <F N="MP3StreamState.cpp"/>
+            <F N="MP3Transcoder.cpp"/>
+            <F N="MPEG1or2AudioRTPSink.cpp"/>
+            <F N="MPEG1or2AudioRTPSource.cpp"/>
+            <F N="MPEG1or2AudioStreamFramer.cpp"/>
+            <F N="MPEG1or2Demux.cpp"/>
+            <F N="MPEG1or2DemuxedElementaryStream.cpp"/>
+            <F N="MPEG1or2DemuxedServerMediaSubsession.cpp"/>
+            <F N="MPEG1or2FileServerDemux.cpp"/>
+            <F N="MPEG1or2VideoFileServerMediaSubsession.cpp"/>
+            <F N="MPEG1or2VideoHTTPSink.cpp"/>
+            <F N="MPEG1or2VideoRTPSink.cpp"/>
+            <F N="MPEG1or2VideoRTPSource.cpp"/>
+            <F N="MPEG1or2VideoStreamDiscreteFramer.cpp"/>
+            <F N="MPEG1or2VideoStreamFramer.cpp"/>
+            <F N="MPEG2IndexFromTransportStream.cpp"/>
+            <F N="MPEG2TransportFileServerMediaSubsession.cpp"/>
+            <F N="MPEG2TransportStreamFramer.cpp"/>
+            <F N="MPEG2TransportStreamFromESSource.cpp"/>
+            <F N="MPEG2TransportStreamFromPESSource.cpp"/>
+            <F N="MPEG2TransportStreamIndexFile.cpp"/>
+            <F N="MPEG2TransportStreamMultiplexor.cpp"/>
+            <F N="MPEG2TransportStreamTrickModeFilter.cpp"/>
+            <F N="MPEG4ESVideoRTPSink.cpp"/>
+            <F N="MPEG4ESVideoRTPSource.cpp"/>
+            <F N="MPEG4GenericRTPSink.cpp"/>
+            <F N="MPEG4GenericRTPSource.cpp"/>
+            <F N="MPEG4LATMAudioRTPSink.cpp"/>
+            <F N="MPEG4LATMAudioRTPSource.cpp"/>
+            <F N="MPEG4VideoFileServerMediaSubsession.cpp"/>
+            <F N="MPEG4VideoStreamDiscreteFramer.cpp"/>
+            <F N="MPEG4VideoStreamFramer.cpp"/>
+            <F N="MPEGVideoStreamFramer.cpp"/>
+            <F N="MPEGVideoStreamParser.cpp"/>
+            <F N="MultiFramedRTPSink.cpp"/>
+            <F N="MultiFramedRTPSource.cpp"/>
+            <F N="OnDemandServerMediaSubsession.cpp"/>
+            <F N="our_md5.c"/>
+            <F N="our_md5hl.c"/>
+            <F N="OutputFile.cpp"/>
+            <F N="PassiveServerMediaSubsession.cpp"/>
+            <F N="QCELPAudioRTPSource.cpp"/>
+            <F N="QuickTimeFileSink.cpp"/>
+            <F N="QuickTimeGenericRTPSource.cpp"/>
+            <F N="RTCP.cpp"/>
+            <F N="rtcp_from_spec.c"/>
+            <F N="RTPInterface.cpp"/>
+            <F N="RTPSink.cpp"/>
+            <F N="RTPSource.cpp"/>
+            <F N="RTSPClient.cpp"/>
+            <F N="RTSPCommon.cpp"/>
+            <F N="RTSPOverHTTPServer.cpp"/>
+            <F N="RTSPServer.cpp"/>
+            <F N="ServerMediaSession.cpp"/>
+            <F N="SimpleRTPSink.cpp"/>
+            <F N="SimpleRTPSource.cpp"/>
+            <F N="SIPClient.cpp"/>
+            <F N="StreamParser.cpp"/>
+            <F N="uLawAudioFilter.cpp"/>
+            <F N="VideoRTPSink.cpp"/>
+            <F N="WAVAudioFileServerMediaSubsession.cpp"/>
+            <F N="WAVAudioFileSource.cpp"/>
+        </Folder>
+        <Folder
+            Name="Header Files"
+            Filters="*.h;*.H;*.hh;*.hpp;*.hxx;*.h++;*.inc;*.sh;*.cpy;*.if">
+            <F N="BitVector.hh"/>
+            <F N="H263plusVideoStreamParser.hh"/>
+            <F N="MP3ADUdescriptor.hh"/>
+            <F N="MP3Internals.hh"/>
+            <F N="MP3InternalsHuffman.hh"/>
+            <F N="MPEGVideoStreamParser.hh"/>
+        </Folder>
+        <Folder
+            Name="Resource Files"
+            Filters="*.ico;*.cur;*.dlg"/>
+        <Folder
+            Name="Bitmaps"
+            Filters="*.bmp"/>
+        <Folder
+            Name="Other Files"
+            Filters="">
+            <F N="COPYING"/>
+            <F
+                N="LiveMedia.mak"
+                Type="Makefile"/>
+        </Folder>
+    </Files>
+</Project>
